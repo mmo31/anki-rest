@@ -24,7 +24,9 @@ function parseSimpleCsv(csvText) {
     .map(line => line.trim())
     .filter(line => line.length > 0)
     .map(line => {
+        console.log('Parsing line:', line);
       const parts = line.split(',');
+      console.log('Parts:', parts);
       return {
         front: (parts[0] || '').trim(),
         back: (parts[1] || '').trim(),
