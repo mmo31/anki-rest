@@ -14,7 +14,6 @@ RUN apt-get update && apt-get install -y \
     libcairo2 \
     libcups2 \
     libdbus-1-3 \
-    libexpat1-7 \
     libfontconfig1 \
     libgbm1 \
     libglib2.0-0 \
@@ -39,7 +38,7 @@ RUN apt-get update && apt-get install -y \
     wget \
     --no-install-recommends \
  && rm -rf /var/lib/apt/lists/*
- 
+
 # Copier le fichier JS unique
 COPY app.js .
 
