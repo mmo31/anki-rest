@@ -66,16 +66,16 @@ async function addCardsToAnki({ user, password, deckName, cards }) {
 
     // 1. Login
     await page.goto('https://ankiweb.net/account/login', { waitUntil: 'networkidle2' });
-    await sleep(1000);
+    await sleep(500);
  
 
     await page.locator('input[type=text]').fill(user);
-    await sleep(1000);
+    await sleep(100);
     
     await page.locator('input[type=password]').fill(password);
     
     
-    await sleep(1000);
+    await sleep(100);
     await page.locator('button[class="btn btn-primary btn-lg"').click();
 
     await sleep(1000);
@@ -84,7 +84,7 @@ async function addCardsToAnki({ user, password, deckName, cards }) {
     // 2. Aller à la page des decks
     await page.goto('https://ankiweb.net/decks/', { waitUntil: 'networkidle2' });
 
-        await sleep(2000);
+        await sleep(500);
     // 3. Cliquer sur le deck correspondant au nom fourni
    
     await page.evaluate(() => {
@@ -94,10 +94,10 @@ async function addCardsToAnki({ user, password, deckName, cards }) {
 });
 
 
-    await sleep(2000);
+    await sleep(500);
     
     await page.goto('https://ankiuser.net/add', { waitUntil: 'networkidle2' });
-await sleep(2000);
+await sleep(500);
 
     // 4. Pour chaque carte, ouvrir le formulaire d'ajout et envoyer la note
     let created = 0;
@@ -108,7 +108,7 @@ await sleep(2000);
     el.innerText = value;
     el.dispatchEvent(new InputEvent('input', { bubbles: true }));
 }, card.front);
-        await sleep(1000);
+        await sleep(100);
         await page.evaluate((value) => {
     const el = document.querySelectorAll('.form-control.field')[1];
     el.innerText = value;
@@ -128,7 +128,7 @@ await page.evaluate(() => {
 
       created += 1;
       // Petit délai pour éviter de spammer le serveur
-      await sleep(2000);
+      await sleep(500);
     }
 
     return { created };
