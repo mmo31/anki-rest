@@ -1,0 +1,9 @@
+services:
+  ankiweb-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ankiweb-api
+    ports:
+      - "5679:3000"
+    restart: unless-stopped
